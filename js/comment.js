@@ -29,7 +29,8 @@ export const comment = (() => {
         const btn = util.disableButton(button);
         const like = document.querySelector(`[onclick="like.like(this)"][data-uuid="${id}"]`);
         like.disabled = true;
-
+        console.log('/api/comment/' + owns.get(id));
+        
         const status = await request(HTTP_DELETE, '/api/comment/' + owns.get(id))
             .token(session.getToken())
             .send(dto.statusResponse)
